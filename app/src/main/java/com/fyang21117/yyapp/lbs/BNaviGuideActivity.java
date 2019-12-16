@@ -69,7 +69,7 @@ public class BNaviGuideActivity extends Activity {
         mNaviHelper.startBikeNavi(BNaviGuideActivity.this);
 
         // 设置诱导监听, 具体诱导信息请参考javadoc
-        //2019年12月16日11:55:55  待加入
+        //2019年12月16日11:55:55  待完善
         mNaviHelper.setRouteGuidanceListener(this, new IBRouteGuidanceListener() {
             @Override
             public void onRouteGuideIconUpdate(Drawable icon) {
