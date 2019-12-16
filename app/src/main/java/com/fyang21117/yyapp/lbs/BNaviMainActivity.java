@@ -399,6 +399,6 @@ public class BNaviMainActivity extends Activity implements OnGetGeoCoderResultLi
         bdStart.recycle();
         bdEnd.recycle();
 
-        mCoder.destroy();
+        //mCoder.destroy();
     }
 }

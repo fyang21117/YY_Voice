@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.baidu.mapapi.bikenavi.BikeNavigateHelper;
+import com.baidu.mapapi.bikenavi.adapter.IBEngineInitListener;
 import com.baidu.mapapi.bikenavi.adapter.IBNaviStatusListener;
 import com.baidu.mapapi.bikenavi.adapter.IBRouteGuidanceListener;
 import com.baidu.mapapi.bikenavi.adapter.IBTTSPlayer;
@@ -40,9 +41,10 @@ public class BNaviGuideActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //获取导航控制类
         mNaviHelper = BikeNavigateHelper.getInstance();
 
+        // 获取诱导页面地图展示View
         View view = mNaviHelper.onCreate(BNaviGuideActivity.this);
         if (view != null) {
             setContentView(view);
@@ -63,8 +65,11 @@ public class BNaviGuideActivity extends Activity {
             }
         });
 
+        //开始导航
         mNaviHelper.startBikeNavi(BNaviGuideActivity.this);
 
+        // 设置诱导监听, 具体诱导信息请参考javadoc
+        //2019年12月16日11:55:55  待加入
         mNaviHelper.setRouteGuidanceListener(this, new IBRouteGuidanceListener() {
             @Override
             public void onRouteGuideIconUpdate(Drawable icon) {
