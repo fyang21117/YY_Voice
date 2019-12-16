@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">YY语音助手</string>
+    <string name="text_RDIOT_hint"> \t您可以说：\n\t打开空气净化器\n\t打开智能风扇\n\t打开智能电饭煲\n\t打开微信\n\t打开QQ\n\t打开手机设置,\n\t打开摄像头\n\t打开电话\n\t发信息</string>
+    <string name="text_begin">请开始说话…</string>
+    <string name="text_upload_success">上传成功</string>
+    <string name="pref_key_translate">translate</string>
+    <string name="tts_toast_format" formatted="false">缓冲进度为%d%%，播放进度为%d%%</string>
+</resources>

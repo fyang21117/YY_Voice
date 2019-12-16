@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/colorPrimaryDark">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="200dp">
+    <TextView
+        android:id="@+id/location_txt"
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:text="location_txt"
+        android:textColor="@color/colorText"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/question_txt"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorText"
+        android:text="question_txt"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/ans_txt"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorText"
+        android:textSize="15sp" />
+
+    <ListView
+        android:id="@+id/appsView"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:background="@color/colorText">
+    </ListView>
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/movieView"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:padding="5dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:background="@color/colorText" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center|bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/yy_start"
+            android:layout_width="162dp"
+            android:layout_height="134dp"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/yy_voice"
+            android:gravity="center_vertical" />
+
+        <ImageButton
+            android:id="@+id/yy_help"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end|bottom"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="end|bottom"
+            android:onClick="onClick"
+            android:src="@drawable/yy_help" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/media_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="media_actions"/>
+    <Button
+        android:id="@+id/Navi_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="Navi_actions"/>
+    <Button
+        android:id="@+id/movie_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="movie_actions"/>
+</LinearLayout>

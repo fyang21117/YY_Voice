@@ -1,0 +1,15 @@
+
+ <menu
+     xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_float"
+        android:orderInCategory="2"
+        android:title="开启浮窗"
+        android:enabled="true"/>
+     <item
+         android:id="@+id/action_about"
+         android:orderInCategory="4"
+         android:title="关于"
+         android:enabled="true"/>
+</menu>
+     <!--android:showAsAction="never"-->
