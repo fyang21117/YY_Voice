@@ -44,6 +44,8 @@ import com.fyang21117.yyapp.R;
 
 import java.util.ArrayList;
 
+import static com.fyang21117.yyapp.MainActivity.showTip;
+
 public class BNaviMainActivity extends Activity implements OnGetGeoCoderResultListener {
 
     private final static String TAG = BNaviMainActivity.class.getSimpleName();
@@ -166,7 +168,6 @@ public class BNaviMainActivity extends Activity implements OnGetGeoCoderResultLi
         public  void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
             if (null != geoCodeResult && null != geoCodeResult.getLocation()) {
                 if (geoCodeResult == null || geoCodeResult.error != SearchResult.ERRORNO.NO_ERROR) {
-                    //没有检索到结果
                     Toast.makeText(BNaviMainActivity.this,"没有检索到结果，请返回重试",Toast.LENGTH_SHORT).show();
                     return;
                 } else {
@@ -185,8 +186,7 @@ public class BNaviMainActivity extends Activity implements OnGetGeoCoderResultLi
     public  void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
         if (null != geoCodeResult && null != geoCodeResult.getLocation()) {
         if (geoCodeResult == null || geoCodeResult.error != SearchResult.ERRORNO.NO_ERROR) {
-            //没有检索到结果
-            Toast.makeText(BNaviMainActivity.this,"没有检索到结果，请返回重试",Toast.LENGTH_SHORT).show();
+            showTip("没有检索到结果，请返回重试");
             return;
         } else {
             endPtLat = geoCodeResult.getLocation().latitude;
@@ -252,22 +252,21 @@ public class BNaviMainActivity extends Activity implements OnGetGeoCoderResultLi
      * 开始骑行导航
      */
     private void startBikeNavi() {
-        Log.d(TAG, "startBikeNavi");
         try {
             BikeNavigateHelper.getInstance().initNaviEngine(this, new IBEngineInitListener() {
                 @Override
                 public void engineInitSuccess() {
-                    Log.d(TAG, "BikeNavi engineInitSuccess");
+                    showTip("BikeNavi engineInitSuccess");
                     routePlanWithBikeParam();
                 }
                 @Override
                 public void engineInitFail() {
-                    Log.d(TAG, "BikeNavi engineInitFail");
+                    showTip("BikeNavi engineInitFail");
                     BikeNavigateHelper.getInstance().unInitNaviEngine();
                 }
             });
         } catch (Exception e) {
-            Log.d(TAG, "startBikeNavi Exception");
+            showTip("startBikeNavi Exception");
             e.printStackTrace();
         }
     }
@@ -276,22 +275,21 @@ public class BNaviMainActivity extends Activity implements OnGetGeoCoderResultLi
      * 开始步行导航
      */
     private void startWalkNavi() {
-        Log.d(TAG, "startWalkNavi");
         try {
             WalkNavigateHelper.getInstance().initNaviEngine(this, new IWEngineInitListener() {
                 @Override
                 public void engineInitSuccess() {
-                    Log.d(TAG, "WalkNavi engineInitSuccess");
+                    showTip("WalkNavi engineInitSuccess");
                     routePlanWithWalkParam();
                 }
                 @Override
                 public void engineInitFail() {
-                    Log.d(TAG, "WalkNavi engineInitFail");
+                    showTip("WalkNavi engineInitFail");
                     WalkNavigateHelper.getInstance().unInitNaviEngine();
                 }
             });
         } catch (Exception e) {
-            Log.d(TAG, "startBikeNavi Exception");
+            showTip("startWalkNavi Exception");
             e.printStackTrace();
         }
     }
@@ -303,18 +301,18 @@ public class BNaviMainActivity extends Activity implements OnGetGeoCoderResultLi
         BikeNavigateHelper.getInstance().routePlanWithRouteNode(bikeParam, new IBRoutePlanListener() {
             @Override
             public void onRoutePlanStart() {
-                Log.d(TAG, "BikeNavi onRoutePlanStart");
+                showTip("BikeNavi onRoutePlanStart");
+
             }
             @Override
             public void onRoutePlanSuccess() {
-                Log.d(TAG, "BikeNavi onRoutePlanSuccess");
-                Intent intent = new Intent();
-                intent.setClass(BNaviMainActivity.this, BNaviGuideActivity.class);
+                showTip("BikeNavi onRoutePlanSuccess");
+                Intent intent = new Intent(BNaviMainActivity.this, BNaviGuideActivity.class);
                 startActivity(intent);
             }
             @Override
             public void onRoutePlanFail(BikeRoutePlanError error) {
-                Log.d(TAG, "BikeNavi onRoutePlanFail");
+                showTip("BikeNavi onRoutePlanFail");
             }
         });
     }
@@ -326,20 +324,17 @@ public class BNaviMainActivity extends Activity implements OnGetGeoCoderResultLi
         WalkNavigateHelper.getInstance().routePlanWithRouteNode(walkParam, new IWRoutePlanListener() {
             @Override
             public void onRoutePlanStart() {
-                Log.d(TAG, "WalkNavi onRoutePlanStart");
+                showTip("WalkNavi onRoutePlanStart");
             }
             @Override
             public void onRoutePlanSuccess() {
-
-                Log.d(TAG, "onRoutePlanSuccess");
-
-                Intent intent = new Intent();
-                intent.setClass(BNaviMainActivity.this, WNaviGuideActivity.class);
+                showTip("WalkNavi onRoutePlanSuccess");
+                Intent intent = new Intent(BNaviMainActivity.this, WNaviGuideActivity.class);
                 startActivity(intent);
             }
             @Override
             public void onRoutePlanFail(WalkRoutePlanError error) {
-                Log.d(TAG, "WalkNavi onRoutePlanFail");
+                showTip("WalkNavi onRoutePlanFail");
             }
         });
     }
@@ -398,7 +393,6 @@ public class BNaviMainActivity extends Activity implements OnGetGeoCoderResultLi
         mMapView.onDestroy();
         bdStart.recycle();
         bdEnd.recycle();
-
         //mCoder.destroy();
     }
 }
